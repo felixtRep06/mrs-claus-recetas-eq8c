@@ -1,7 +1,5 @@
 # Mrs. Claus · Recetas navideñas
 
-Módulo navideño de la página web de un centro comercial · **Equipo 8C** · Fundamentos de Ingeniería de Software · ITC Celaya
-
 Integrantes: Hernández Miranda Adrián Jesús · Medina Morales Anthony · Mendoza Teniente Joshua · Rentería Patiño Félix Tadeo
 
 Tablero del sprint: https://trello.com/b/Vm3ySzrE/spr1eq8c
