@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "id": 1,
+    "nombre": "Chocolate caliente mexicano",
+    "tiempo": "desayuno",
+    "imagen": "img/recetas/chocolate.svg",
+    "video": "https://www.youtube.com/embed/NErmkJQ83do",
+    "pasos": [
+      "Calienta 1 litro de leche a fuego medio con 1 raja de canela, sin dejar que hierva.",
+      "Agrega 2 tablillas de chocolate de mesa en trozos y mueve hasta que se derritan.",
+      "Endulza al gusto con azúcar o piloncillo.",
+      "Bate con molinillo o batidor hasta que haga espuma.",
+      "Retira la canela y sirve caliente, acompañado de pan dulce."
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Bacalao a la vizcaína",
+    "tiempo": "cena",
+    "imagen": "img/recetas/bacalao.svg",
+    "video": "",
+    "pasos": [
+      "Remoja 500 g de bacalao seco en agua fría durante 24 horas, cambiando el agua varias veces.",
+      "Escurre, desmenuza el bacalao y retira piel y espinas.",
+      "Sofríe en aceite de oliva cebolla y ajo picados hasta que estén transparentes.",
+      "Agrega 1 kg de jitomate molido y cocina 15 minutos.",
+      "Incorpora el bacalao, papas cocidas en cubos, aceitunas, alcaparras y chiles güeros.",
+      "Cocina a fuego bajo 20 minutos más y sirve caliente."
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Ponche navideño de frutas",
+    "tiempo": "postre",
+    "imagen": "img/recetas/ponche.svg",
+    "video": "https://www.youtube.com/embed/KbL3zmyS0Wo",
+    "pasos": [
+      "Hierve 4 litros de agua con 2 rajas de canela, piloncillo y un puño de flor de jamaica.",
+      "Agrega tejocotes y caña de azúcar en trozos; cocina 15 minutos.",
+      "Añade guayabas, manzanas picadas, ciruelas pasa y tamarindo pelado.",
+      "Cocina a fuego bajo 20 minutos más, hasta que la fruta esté suave.",
+      "Sirve caliente en jarritos con un poco de fruta en cada uno."
+    ]
+  }
+]
