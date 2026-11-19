@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Chocolate caliente mexicano">
+<rect width="400" height="300" fill="#6b3e26"/>
+<circle cx="70" cy="60" r="6" fill="#fff" opacity=".7"/><circle cx="330" cy="50" r="5" fill="#fff" opacity=".7"/><circle cx="350" cy="230" r="4" fill="#fff" opacity=".7"/><circle cx="50" cy="240" r="5" fill="#fff" opacity=".7"/>
+<rect x="140" y="110" width="110" height="120" rx="14" fill="#b3261e"/>
+<path d="M250 135 q40 0 40 35 t-40 35" fill="none" stroke="#b3261e" stroke-width="14"/>
+<ellipse cx="195" cy="112" rx="55" ry="12" fill="#4a2a17"/>
+<path d="M175 95 q-10 -20 5 -40 M205 95 q-10 -20 5 -40" fill="none" stroke="#fff" stroke-width="4" opacity=".6"/>
+<text x="200" y="282" font-family="Arial" font-size="20" font-weight="bold" fill="#fff" text-anchor="middle">Chocolate caliente mexicano</text>
+</svg>
