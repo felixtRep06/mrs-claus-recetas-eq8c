@@ -36,3 +36,103 @@ footer {
   color: #666;
   padding: 1rem;
 }
+
+/* ---------- US1 · Selección del tiempo de comida (ACT-7) ---------- */
+section {
+  background: #ffffff;
+  border: 1px solid #ead9c6;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+section h2 { margin: 0 0 8px; }
+
+.ayuda { margin: 0 0 20px; color: #555; }
+
+.opciones-tiempo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.opcion-tiempo {
+  font: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 24px 16px;
+  border: 2px solid #ead9c6;
+  border-radius: 12px;
+  background: var(--crema);
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.opcion-tiempo:hover { border-color: var(--rojo); }
+
+.opcion-tiempo[aria-pressed="true"] {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: #fff;
+}
+
+.seleccion { margin: 20px 0 0; font-weight: bold; color: #1e5b22; }
+
+.mensaje-error {
+  margin: 12px 0 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #fdecea;
+  color: #8c1d17;
+  font-weight: bold;
+}
+
+.acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+
+.boton-principal, .boton-secundario {
+  font: inherit;
+  font-weight: bold;
+  padding: 14px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton-principal { background: var(--rojo); color: #fff; border: 1px solid var(--rojo); }
+.boton-secundario { background: #fff; color: var(--rojo); border: 1px solid var(--rojo); }
+
+/* ---------- US2 · Listado mínimo (ACT-8 lo completa) ---------- */
+.encabezado-listado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mensaje-vacio {
+  padding: 24px;
+  border: 2px dashed #d8c3ab;
+  border-radius: 12px;
+  text-align: center;
+  color: #6b5a48;
+}
+
+.lista-recetas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta-receta {
+  border: 1px solid #ead9c6;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-receta img { width: 100%; height: 170px; object-fit: cover; display: block; }
+.tarjeta-receta span { padding: 14px 16px; font-weight: bold; }

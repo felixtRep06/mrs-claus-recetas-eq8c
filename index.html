@@ -13,14 +13,39 @@
   </header>
 
   <main>
-    <!-- US1 · Seleccionar el tiempo de comida (ACT-02 diseño · ACT-05 desarrollo) -->
-    <section id="seleccion-tiempo"></section>
+    <!-- US1 · Seleccionar el tiempo de comida (ACT-4 diseño · ACT-7 construcción y pruebas) -->
+    <section id="seleccion-tiempo" aria-labelledby="titulo-tiempo">
+      <h2 id="titulo-tiempo">¿Para qué ocasión quieres cocinar?</h2>
+      <p class="ayuda">Elige un tiempo de comida y confirma para ver sus recetas.</p>
 
-    <!-- US2 · Listado y detalle de receta (ACT-03 diseño · ACT-06 desarrollo) -->
-    <section id="listado-recetas" hidden></section>
+      <div class="opciones-tiempo" role="group" aria-label="Tiempos de comida">
+        <button type="button" class="opcion-tiempo" data-tiempo="desayuno" aria-pressed="false">Desayuno</button>
+        <button type="button" class="opcion-tiempo" data-tiempo="comida" aria-pressed="false">Comida</button>
+        <button type="button" class="opcion-tiempo" data-tiempo="cena" aria-pressed="false">Cena</button>
+        <button type="button" class="opcion-tiempo" data-tiempo="postre" aria-pressed="false">Postre</button>
+      </div>
+
+      <p id="tiempo-seleccionado" class="seleccion" aria-live="polite">Aún no eliges un tiempo de comida.</p>
+      <p id="mensaje-tiempo" class="mensaje-error" role="alert" hidden>Elige un tiempo de comida para continuar.</p>
+
+      <div class="acciones">
+        <button type="button" id="btn-confirmar" class="boton-principal">Confirmar</button>
+        <button type="button" id="btn-cambiar" class="boton-secundario">Cambiar selección</button>
+      </div>
+    </section>
+
+    <!-- US2 · Listado y detalle de receta (ACT-5 diseño · ACT-8 construcción y pruebas) -->
+    <section id="listado-recetas" hidden>
+      <div class="encabezado-listado">
+        <h2 id="titulo-listado">Recetas</h2>
+        <button type="button" id="btn-cambiar-listado" class="boton-secundario">Cambiar tiempo de comida</button>
+      </div>
+      <p id="sin-recetas" class="mensaje-vacio" hidden></p>
+      <ul id="lista-recetas" class="lista-recetas"></ul>
+    </section>
     <section id="detalle-receta" hidden></section>
 
-    <!-- US3 · Ver la receta en video o por escrito (ACT-04 diseño · ACT-07 desarrollo) -->
+    <!-- US3 · Ver la receta en video o por escrito (ACT-6 diseño · ACT-9 construcción y pruebas) -->
     <section id="vista-receta" hidden></section>
   </main>
 
