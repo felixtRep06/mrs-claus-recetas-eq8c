@@ -166,4 +166,84 @@ document.getElementById('btn-volver-error').addEventListener('click', regresarAl
 
 // ---------- US3 · Ver la receta en video o por escrito (ACT-9) ----------
 
+const panelVideo = document.getElementById('panel-video');
+const panelTexto = document.getElementById('panel-texto');
+const avisoModo = document.getElementById('aviso-modo');
+const iframeVideo = document.getElementById('video-receta');
+
+function tieneVideo(r) { return Boolean(r && r.video); }
+function tienePasos(r) { return Boolean(r && Array.isArray(r.pasos) && r.pasos.length > 0); }
+
+function mostrarAviso(titulo, texto, textoBoton, modoDestino) {
+  document.getElementById('aviso-titulo').textContent = titulo;
+  document.getElementById('aviso-texto').textContent = texto;
+  const boton = document.getElementById('aviso-boton');
+  boton.textContent = textoBoton;
+  boton.onclick = () => abrirModo(modoDestino);
+  avisoModo.hidden = false;
+}
+
+// Criterios 2 a 6: muestra la receta actual en la modalidad elegida.
+function abrirModo(modo) {
+  const receta = estado.recetaActual;
+  if (!receta) return;
+
+  document.getElementById('vista-nombre').textContent = receta.nombre;
+  document.getElementById('vista-tiempo').textContent = NOMBRES_TIEMPO[receta.tiempo];
+  const img = document.getElementById('vista-imagen');
+  img.src = receta.imagen;
+  img.alt = receta.nombre;
+  document.getElementById('modo-video').setAttribute('aria-pressed', String(modo === 'video'));
+  document.getElementById('modo-texto').setAttribute('aria-pressed', String(modo === 'texto'));
+
+  panelVideo.hidden = true;
+  panelTexto.hidden = true;
+  avisoModo.hidden = true;
+  iframeVideo.src = '';
+
+  if (modo === 'video') {
+    if (tieneVideo(receta)) {
+      // Criterio 2: reproductor con el video de esa receta.
+      iframeVideo.src = receta.video;
+      iframeVideo.title = `Video de la receta: ${receta.nombre}`;
+      panelVideo.hidden = false;
+    } else {
+      // Criterio 5: sin video se avisa y se ofrece la versión escrita.
+      mostrarAviso('Esta receta no tiene video disponible',
+        'Puedes seguir la preparación con las instrucciones escritas.',
+        'Leer la receta por escrito', 'texto');
+    }
+  } else if (tienePasos(receta)) {
+    // Criterio 3: instrucciones escritas en orden de preparación.
+    const lista = document.getElementById('pasos-receta');
+    lista.innerHTML = '';
+    receta.pasos.forEach((paso) => {
+      const li = document.createElement('li');
+      li.textContent = paso;
+      lista.appendChild(li);
+    });
+    panelTexto.hidden = false;
+  } else {
+    // Criterio 6: sin instrucciones escritas se informa que no están disponibles.
+    mostrarAviso('Las instrucciones escritas no están disponibles',
+      'Esta receta todavía no tiene sus pasos por escrito. Puedes consultarla en video.',
+      'Ver el video', 'video');
+  }
+  mostrarSeccion('vista-receta');
+}
+
+// Criterio 7: «Regresar» vuelve al detalle de la receta.
+function regresarAlDetalle() {
+  iframeVideo.src = '';
+  abrirDetalle(estado.recetaActual.id);
+}
+
+// Criterio 1: el detalle ofrece «Ver video» y «Leer receta».
+document.getElementById('btn-detalle-video').addEventListener('click', () => abrirModo('video'));
+document.getElementById('btn-detalle-texto').addEventListener('click', () => abrirModo('texto'));
+// Criterio 4: cambiar de modalidad conserva la receta que se consulta.
+document.getElementById('modo-video').addEventListener('click', () => abrirModo('video'));
+document.getElementById('modo-texto').addEventListener('click', () => abrirModo('texto'));
+document.getElementById('btn-regresar-detalle').addEventListener('click', regresarAlDetalle);
+
 cargarRecetas();

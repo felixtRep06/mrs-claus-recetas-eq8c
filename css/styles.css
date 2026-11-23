@@ -202,3 +202,64 @@ section h2 { margin: 0 0 8px; }
 .error-detalle[hidden] { display: none; }
 .error-detalle h2 { margin: 0; }
 .error-detalle p { margin: 0; color: #444; }
+
+/* ---------- US3 · Video y por escrito (ACT-9) ---------- */
+.opciones-receta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+
+.vista-encabezado { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-bottom: 20px; }
+.vista-imagen { width: 96px; height: 72px; object-fit: cover; border-radius: 8px; }
+.vista-titulo { flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.vista-titulo h2 { margin: 0; font-size: 28px; }
+
+.selector-modo { display: flex; gap: 4px; padding: 4px; background: #f4ece2; border-radius: 10px; }
+
+.boton-modo {
+  font: inherit;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #8c1d17;
+  cursor: pointer;
+}
+
+.boton-modo[aria-pressed="true"] { background: var(--rojo); color: #fff; }
+
+.reproductor { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #1f1f1f; border-radius: 12px; overflow: hidden; }
+.reproductor iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+#panel-texto h3 { margin: 0 0 16px; }
+
+.pasos { margin: 0; padding: 0; list-style: none; counter-reset: paso; display: flex; flex-direction: column; gap: 16px; }
+
+.pasos li { counter-increment: paso; display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.5; }
+
+.pasos li::before {
+  content: counter(paso);
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--rojo);
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aviso-modo {
+  border: 2px dashed #d8c3ab;
+  border-radius: 12px;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.aviso-modo[hidden], #panel-video[hidden], #panel-texto[hidden] { display: none; }
+.aviso-modo h3 { margin: 0; }
+.aviso-modo p { margin: 0; color: #444; max-width: 520px; }
