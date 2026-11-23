@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mrs. Claus · Recetas navideñas</title>
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 <body>
   <header>
@@ -56,7 +56,10 @@
             <span id="detalle-video" class="dato"></span>
           </div>
           <!-- ACT-9 agrega aquí las opciones «Ver video» y «Leer receta» (US3) -->
-          <div id="opciones-receta"></div>
+          <div id="opciones-receta" class="opciones-receta" role="group" aria-label="Cómo quieres ver la receta">
+            <button type="button" id="btn-detalle-video" class="boton-principal">Ver video</button>
+            <button type="button" id="btn-detalle-texto" class="boton-secundario">Leer receta</button>
+          </div>
         </div>
       </div>
 
@@ -68,13 +71,44 @@
     </section>
 
     <!-- US3 · Ver la receta en video o por escrito (ACT-6 diseño · ACT-9 construcción y pruebas) -->
-    <section id="vista-receta" hidden></section>
+    <section id="vista-receta" hidden>
+      <button type="button" id="btn-regresar-detalle" class="boton-secundario boton-regresar">← Regresar al detalle</button>
+
+      <div class="vista-encabezado">
+        <img id="vista-imagen" class="vista-imagen" src="" alt="">
+        <div class="vista-titulo">
+          <span id="vista-tiempo" class="chip-tiempo"></span>
+          <h2 id="vista-nombre"></h2>
+        </div>
+        <div class="selector-modo" role="group" aria-label="Modalidad de la receta">
+          <button type="button" id="modo-video" class="boton-modo" aria-pressed="false">Ver video</button>
+          <button type="button" id="modo-texto" class="boton-modo" aria-pressed="false">Leer receta</button>
+        </div>
+      </div>
+
+      <div id="panel-video" hidden>
+        <div class="reproductor">
+          <iframe id="video-receta" title="Video de la receta" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="panel-texto" hidden>
+        <h3>Instrucciones de preparación</h3>
+        <ol id="pasos-receta" class="pasos"></ol>
+      </div>
+
+      <div id="aviso-modo" class="aviso-modo" role="alert" hidden>
+        <h3 id="aviso-titulo"></h3>
+        <p id="aviso-texto"></p>
+        <button type="button" id="aviso-boton" class="boton-principal"></button>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>Equipo 8C · Fundamentos de Ingeniería de Software · ITC Celaya</p>
   </footer>
 
-  <script src="js/app.js?v=4"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>
