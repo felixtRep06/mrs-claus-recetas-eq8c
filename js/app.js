@@ -72,36 +72,97 @@ document.getElementById('btn-cambiar').addEventListener('click', cambiarSeleccio
 document.getElementById('btn-cambiar-listado').addEventListener('click', cambiarSeleccion);
 
 // ---------- US2 · Listado y detalle de receta (ACT-8) ----------
-// Versión mínima del listado para probar el filtro de US1.
-// ACT-8 la completa con las tarjetas de receta y el detalle.
 
+const ETIQUETA_TIEMPO = (t) => (NOMBRES_TIEMPO[t] || '').toLowerCase();
+
+// Criterio 1: el listado muestra cada receta con su nombre y una imagen.
 function mostrarListado(recetas) {
-  const nombre = NOMBRES_TIEMPO[estado.tiempoConfirmado];
-  document.getElementById('titulo-listado').textContent = `Recetas de ${nombre.toLowerCase()}`;
+  const nombre = ETIQUETA_TIEMPO(estado.tiempoConfirmado);
+  document.getElementById('titulo-listado').textContent = `Recetas de ${nombre}`;
   const lista = document.getElementById('lista-recetas');
   const vacio = document.getElementById('sin-recetas');
   lista.innerHTML = '';
 
   // Criterio 6 de US1: sin recetas para ese tiempo se avisa y se permite cambiar.
   if (recetas.length === 0) {
-    vacio.textContent = `No hay recetas disponibles para ${nombre.toLowerCase()}. Elige otro tiempo de comida.`;
+    vacio.textContent = `No hay recetas disponibles para ${nombre}. Elige otro tiempo de comida.`;
     vacio.hidden = false;
   } else {
     vacio.hidden = true;
     recetas.forEach((r) => {
       const li = document.createElement('li');
-      li.className = 'tarjeta-receta';
+      const boton = document.createElement('button');
+      boton.type = 'button';
+      boton.className = 'tarjeta-receta';
+      boton.dataset.id = r.id;
       const img = document.createElement('img');
       img.src = r.imagen;
       img.alt = r.nombre;
       const titulo = document.createElement('span');
+      titulo.className = 'tarjeta-nombre';
       titulo.textContent = r.nombre;
-      li.append(img, titulo);
+      const accion = document.createElement('span');
+      accion.className = 'tarjeta-accion';
+      accion.textContent = 'Ver receta →';
+      boton.append(img, titulo, accion);
+      // Criterio 2: al seleccionar una receta se abre su detalle.
+      boton.addEventListener('click', () => abrirDetalle(r.id));
+      li.appendChild(boton);
       lista.appendChild(li);
     });
   }
   mostrarSeccion('listado-recetas');
 }
+
+// Una receta se puede mostrar si existe y tiene nombre e imagen.
+function recetaValida(r) {
+  return Boolean(r && r.nombre && r.imagen && NOMBRES_TIEMPO[r.tiempo]);
+}
+
+// Criterios 3 y 4: el detalle muestra nombre e imagen, solo de la receta elegida.
+// Criterio 5: si el detalle no puede cargarse se muestra un error con opción de volver.
+function abrirDetalle(id) {
+  const receta = estado.recetas.find((r) => r.id === id);
+  const contenido = document.getElementById('contenido-detalle');
+  const error = document.getElementById('error-detalle');
+  const regresar = document.getElementById('btn-regresar-listado');
+
+  if (!recetaValida(receta)) {
+    estado.recetaActual = null;
+    contenido.hidden = true;
+    regresar.hidden = true;
+    error.hidden = false;
+    mostrarSeccion('detalle-receta');
+    return;
+  }
+
+  estado.recetaActual = receta;
+  error.hidden = true;
+  contenido.hidden = false;
+  regresar.hidden = false;
+  regresar.textContent = `← Regresar a recetas de ${ETIQUETA_TIEMPO(estado.tiempoConfirmado)}`;
+
+  const img = document.getElementById('detalle-imagen');
+  img.src = receta.imagen;
+  img.alt = receta.nombre;
+  document.getElementById('detalle-nombre').textContent = receta.nombre;
+  document.getElementById('detalle-tiempo').textContent = NOMBRES_TIEMPO[receta.tiempo];
+  const pasos = Array.isArray(receta.pasos) ? receta.pasos.length : 0;
+  document.getElementById('detalle-pasos').textContent =
+    pasos > 0 ? `${pasos} pasos` : 'Sin instrucciones escritas';
+  document.getElementById('detalle-video').textContent =
+    receta.video ? 'Video disponible' : 'Sin video';
+  mostrarSeccion('detalle-receta');
+}
+
+// Criterio 6: «Regresar» vuelve al listado y conserva el tiempo de comida.
+function regresarAlListado() {
+  estado.recetaActual = null;
+  mostrarListado(filtrarPorTiempo(estado.tiempoConfirmado));
+}
+
+document.getElementById('btn-regresar-listado').addEventListener('click', regresarAlListado);
+document.getElementById('btn-volver-error').addEventListener('click', regresarAlListado);
 
 // ---------- US3 · Ver la receta en video o por escrito (ACT-9) ----------
 
