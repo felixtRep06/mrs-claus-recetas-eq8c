@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mrs. Claus · Recetas navideñas</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
   <header>
@@ -43,7 +43,29 @@
       <p id="sin-recetas" class="mensaje-vacio" hidden></p>
       <ul id="lista-recetas" class="lista-recetas"></ul>
     </section>
-    <section id="detalle-receta" hidden></section>
+    <section id="detalle-receta" hidden>
+      <button type="button" id="btn-regresar-listado" class="boton-secundario boton-regresar">← Regresar a las recetas</button>
+
+      <div id="contenido-detalle" class="detalle">
+        <img id="detalle-imagen" class="detalle-imagen" src="" alt="">
+        <div class="detalle-info">
+          <span id="detalle-tiempo" class="chip-tiempo"></span>
+          <h2 id="detalle-nombre"></h2>
+          <div class="detalle-datos">
+            <span id="detalle-pasos" class="dato"></span>
+            <span id="detalle-video" class="dato"></span>
+          </div>
+          <!-- ACT-9 agrega aquí las opciones «Ver video» y «Leer receta» (US3) -->
+          <div id="opciones-receta"></div>
+        </div>
+      </div>
+
+      <div id="error-detalle" class="error-detalle" role="alert" hidden>
+        <h2>No pudimos cargar esta receta</h2>
+        <p>Ocurrió un problema al abrir el detalle. Vuelve al listado e intenta abrirla de nuevo.</p>
+        <button type="button" id="btn-volver-error" class="boton-principal">Volver al listado</button>
+      </div>
+    </section>
 
     <!-- US3 · Ver la receta en video o por escrito (ACT-6 diseño · ACT-9 construcción y pruebas) -->
     <section id="vista-receta" hidden></section>
@@ -53,6 +75,6 @@
     <p>Equipo 8C · Fundamentos de Ingeniería de Software · ITC Celaya</p>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=4"></script>
 </body>
 </html>
