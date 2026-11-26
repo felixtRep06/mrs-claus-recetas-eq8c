@@ -51,3 +51,20 @@ docs/evidencias/    Mockups y capturas de pruebas
 ## Ver la página
 
 Abrir `index.html` con la extensión Live Server de VS Code (el catálogo se carga con `fetch`, así que no funciona abriendo el archivo con doble clic). Publicada en GitHub Pages: https://felixtrep06.github.io/mrs-claus-recetas-eq8c/
+
+## Sprint 2 · Present Village (donaciones)
+
+El módulo de donaciones vive en la carpeta `present-village/` y se abre desde el enlace del encabezado de Mrs. Claus.
+
+| Historia | Qué hace | Actividades |
+|---|---|---|
+| US1 | Seleccionar el tipo de donación (dinero u objeto) | ACT-1 análisis · ACT-4 diseño · ACT-7 construcción y pruebas |
+| US2 | Elegir si la donación es anónima o con nombre | ACT-2 análisis · ACT-5 diseño · ACT-8 construcción y pruebas |
+| US3 | Capturar los datos de la donación y registrarla | ACT-3 análisis · ACT-6 diseño · ACT-9 construcción y pruebas |
+
+```
+present-village/index.html          Página del módulo
+present-village/css/styles.css      Estilos
+present-village/js/app.js           Lógica (una sección por historia)
+present-village/docs/evidencias/    Mockups y capturas de pruebas
+```
